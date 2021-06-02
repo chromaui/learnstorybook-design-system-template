@@ -59,15 +59,17 @@ A quick look at the top-level files and directories included with this template.
 
 3.  **`src`**: This directory will contain all of the code related to what you will see on your application.
 
-4.  **`.gitignore`**: This file tells git which files it should not track or maintain during the development process of your project.
+4. **`.env`**: This file will contain the necessary environment variables for your application.
 
-5. **`LICENSE`**: The template is licensed under the MIT licence.
+5.  **`.gitignore`**: This file tells git which files it should not track or maintain during the development process of your project.
 
-6. **`package.json`**: Standard manifest file for Node.js projects, which typically includes project specific metadata (such as the project's name, the author among other information). It's based on this file that npm will know which packages are necessary to the project.
+6. **`LICENSE`**: The template is licensed under the MIT licence.
 
-7. **`yarn.lock`**: This is an automatically generated file based on the exact versions of your npm dependencies that were installed for your project. **(Do not change it manually).**
+7. **`package.json`**: Standard manifest file for Node.js projects, which typically includes project specific metadata (such as the project's name, the author among other information). It's based on this file that npm will know which packages are necessary to the project.
 
-8. **`README.md`**: A text file containing useful reference information about the project.
+8. **`yarn.lock`**: This is an automatically generated file based on the exact versions of your npm dependencies that were installed for your project. **(Do not change it manually).**
+
+9. **`README.md`**: A text file containing useful reference information about the project.
 
 ## Contribute
 
