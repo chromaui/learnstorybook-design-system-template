@@ -47,6 +47,7 @@ A quick look at the top-level files and directories included with this template.
     ├── public
     ├── src
     ├── .gitignore
+    ├── .env
     ├── LICENSE
     ├── package.json
     ├── yarn.lock
