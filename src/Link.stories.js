@@ -21,35 +21,35 @@ export default {
 
 export const All = (args) => (
   <div>
-    <Link href="https://learnstorybook.com">Default</Link>
+    <Link href="https://storybook.js.org/tutorials/">Default</Link>
     <br />
-    <Link secondary href="https://learnstorybook.com">
+    <Link secondary href="https://storybook.js.org/tutorials/">
       Secondary
     </Link>
     <br />
-    <Link tertiary href="https://learnstorybook.com">
+    <Link tertiary href="https://storybook.js.org/tutorials/">
       tertiary
     </Link>
     <br />
-    <Link nochrome href="https://learnstorybook.com">
+    <Link nochrome href="https://storybook.js.org/tutorials/">
       nochrome
     </Link>
     <br />
-    <Link href="https://learnstorybook.com">
+    <Link href="https://storybook.js.org/tutorials/">
       <Icon icon="discord" aria-hidden />
       With icon in front
     </Link>
     <br />
-    <Link containsIcon href="https://learnstorybook.com" aria-label="Toggle side bar">
+    <Link containsIcon href="https://storybook.js.org/tutorials/" aria-label="Toggle side bar">
       <Icon icon="sidebar" aria-hidden />
     </Link>
     <br />
-    <Link containsIcon withArrow href="https://learnstorybook.com">
+    <Link containsIcon withArrow href="https://storybook.js.org/tutorials/">
       With arrow behind
     </Link>
     <br />
     <span style={{ background: '#333' }}>
-      <Link inverse href="https://learnstorybook.com">
+      <Link inverse href="https://storybook.js.org/tutorials/">
         Inverted colors
       </Link>
     </span>
