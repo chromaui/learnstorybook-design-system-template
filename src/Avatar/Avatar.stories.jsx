@@ -28,7 +28,6 @@ export const Sizes = {
   ),
 };
 
-
 export const Initials = {
   render: (args) => (
     <>
@@ -54,7 +53,6 @@ export const Loading = {
   ),
 };
 
-
 export const Large = {
   render: () => (
     <>
@@ -67,13 +65,4 @@ export const Large = {
       />
     </>
   ),
-};
-
-export const Controls = {
-  args: {
-    loading: false,
-    size: 'tiny',
-    username: 'Dominic Nguyen',
-    src: 'https://avatars.githubusercontent.com/u/263385',
-  },
 };
