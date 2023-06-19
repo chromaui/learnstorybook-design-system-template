@@ -1,9 +1,11 @@
-import React from 'react';
 import PropTypes from 'prop-types';
-import styled, { css } from 'styled-components';
-import { color, typography } from './shared/styles';
-import { glow } from './shared/animation';
-import { Icon } from './Icon';
+import styled from '@emotion/styled';
+import { css } from '@emotion/react';
+import { color, typography } from '../shared/styles';
+
+import { glow } from '../shared/animation';
+
+import { Icon } from '../Icon/Icon';
 
 export const sizes = {
   large: 40,
@@ -13,7 +15,7 @@ export const sizes = {
 };
 
 const Image = styled.div`
-  background: ${props => (!props.loading ? 'transparent' : color.light)};
+  background: ${(props) => (!props.loading ? 'transparent' : color.light)};
   border-radius: 50%;
   display: inline-block;
   vertical-align: top;
@@ -24,7 +26,7 @@ const Image = styled.div`
   width: ${sizes.medium}px;
   line-height: ${sizes.medium}px;
 
-  ${props =>
+  ${(props) =>
     props.size === 'tiny' &&
     css`
       height: ${sizes.tiny}px;
@@ -32,7 +34,7 @@ const Image = styled.div`
       line-height: ${sizes.tiny}px;
     `}
 
-  ${props =>
+  ${(props) =>
     props.size === 'small' &&
     css`
       height: ${sizes.small}px;
@@ -40,7 +42,7 @@ const Image = styled.div`
       line-height: ${sizes.small}px;
     `}
 
-  ${props =>
+  ${(props) =>
     props.size === 'large' &&
     css`
       height: ${sizes.large}px;
@@ -48,7 +50,7 @@ const Image = styled.div`
       line-height: ${sizes.large}px;
     `}
 
-  ${props =>
+  ${(props) =>
     !props.src &&
     css`
       background: ${!props.loading && '#37D5D3'};
@@ -73,7 +75,6 @@ const Image = styled.div`
     animation: ${glow} 1.5s ease-in-out infinite;
   }
 `;
-
 // prettier-ignore
 const Initial = styled.div`
   color: ${color.lightest};
@@ -98,8 +99,12 @@ const Initial = styled.div`
   `}
 `;
 
+/**
+- Use an avatar for attributing actions or content to specific users.
+- The user's name should always be present when using Avatar – either printed beside the avatar or in a tooltip.
+**/
 export function Avatar({ loading, username, src, size, ...props }) {
-  let avatarFigure = <Icon icon="useralt" />;
+  let avatarFigure = <Icon icon='useralt' />;
   const a11yProps = {};
 
   if (loading) {
@@ -110,7 +115,7 @@ export function Avatar({ loading, username, src, size, ...props }) {
   } else {
     a11yProps['aria-label'] = username;
     avatarFigure = (
-      <Initial size={size} aria-hidden="true">
+      <Initial size={size} aria-hidden='true'>
         {username.substring(0, 1)}
       </Initial>
     );
@@ -124,9 +129,22 @@ export function Avatar({ loading, username, src, size, ...props }) {
 }
 
 Avatar.propTypes = {
+  /**
+    Use the loading state to indicate that the data Avatar needs is still loading.
+    */
   loading: PropTypes.bool,
+  /**
+    Avatar falls back to the user's initial when no image is provided.
+    Supply a `username` and omit `src` to see what this looks like.
+    */
   username: PropTypes.string,
+  /**
+    The URL of the Avatar's image.
+    */
   src: PropTypes.string,
+  /**
+    Avatar comes in four sizes. In most cases, you'll be fine with `medium`.
+    */
   size: PropTypes.oneOf(Object.keys(sizes)),
 };
 
