@@ -59,5 +59,8 @@
     "react-dom": {
       "optional": true
     }
+  },
+  "resolutions": {
+    "jackspeak": "2.1.1"
   }
 }
