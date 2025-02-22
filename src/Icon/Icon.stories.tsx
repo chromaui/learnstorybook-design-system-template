@@ -1,6 +1,10 @@
+import type { Meta, StoryObj } from '@storybook/react';
+
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
+
 import { Icon } from './Icon';
+
 import { icons } from '../shared/icons';
 
 const Meta = styled.div`
@@ -8,7 +12,7 @@ const Meta = styled.div`
   font-size: 12px;
 `;
 
-const Item = styled.li`
+const Item = styled.li<{ minimal: boolean }>`
   display: inline-flex;
   flex-direction: row;
   align-items: center;
@@ -47,19 +51,22 @@ const List = styled.ul`
   list-style: none;
 `;
 
-export default {
+const meta = {
   title: 'Design System/Icon',
   component: Icon,
-};
+} satisfies Meta<typeof Icon>;
 
-export const Labels = {
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+export const Labels: Story = {
   render: () => (
     <>
       There are {Object.keys(icons).length} icons
       <List>
         {Object.keys(icons).map((key) => (
-          <Item key={key}>
-            <Icon icon={key} aria-hidden />
+          <Item minimal={false} key={key}>
+            <Icon icon={key as keyof typeof icons} aria-hidden />
             <Meta>{key}</Meta>
           </Item>
         ))}
@@ -68,20 +75,20 @@ export const Labels = {
   ),
 };
 
-export const NoLabels = {
+export const NoLabels: Story = {
   name: 'no labels',
   render: () => (
     <List>
       {Object.keys(icons).map((key) => (
         <Item minimal key={key}>
-          <Icon icon={key} aria-label={key} />
+          <Icon icon={key as keyof typeof icons} aria-label={key} />
         </Item>
       ))}
     </List>
   ),
 };
 
-export const Inline = {
+export const Inline: Story = {
   render: (args) => (
     <>
       this is an inline <Icon {...args} /> icon (default)
@@ -93,7 +100,7 @@ export const Inline = {
   },
 };
 
-export const Block = {
+export const Block: Story = {
   render: (args) => (
     <>
       this is a block <Icon {...args} /> icon

@@ -1,9 +1,13 @@
-import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import { background, color, typography } from '../shared/styles';
 
-const BadgeWrapper = styled.div`
+interface BadgeProps {
+  status?: 'positive' | 'negative' | 'neutral' | 'error' | 'warning';
+  children: React.ReactNode;
+}
+
+const BadgeWrapper = styled.div<BadgeProps>`
   display: inline-block;
   vertical-align: top;
   font-size: 11px;
@@ -58,19 +62,10 @@ const BadgeWrapper = styled.div`
 /**
  * **Badges?!** We don't need no stinkin' badges!!
  */
-export function Badge({ ...props }) {
-  return <BadgeWrapper {...props} />;
-}
-Badge.propTypes = {
-  status: PropTypes.oneOf([
-    'positive',
-    'negative',
-    'neutral',
-    'error',
-    'warning',
-  ]),
-};
-
-Badge.defaultProps = {
-  status: 'neutral',
+export const Badge: React.FC<BadgeProps> = ({
+  status = 'neutral',
+  children,
+  ...props
+}) => {
+  return <BadgeWrapper {...props}>{children}</BadgeWrapper>;
 };

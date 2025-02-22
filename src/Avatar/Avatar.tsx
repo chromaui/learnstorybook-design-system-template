@@ -1,11 +1,12 @@
-import PropTypes from 'prop-types';
+import { FC, ComponentProps } from 'react';
+
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import { color, typography } from '../shared/styles';
 
 import { glow } from '../shared/animation';
 
-import { Icon } from '../Icon/Icon';
+import { Icon } from '../Icon';
 
 export const sizes = {
   large: 40,
@@ -14,7 +15,27 @@ export const sizes = {
   tiny: 16,
 };
 
-const Image = styled.div`
+interface AvatarProps {
+  /**
+    Use the loading state to indicate that the data Avatar needs is still loading.
+    */
+  loading?: boolean;
+  /**
+   Avatar falls back to the user's initial when no image is provided.
+   Supply a `username` and omit `src` to see what this looks like.
+   */
+  username?: string;
+  /**
+    The URL of the Avatar's image.
+    */
+  src?: string;
+  /**
+    Avatar comes in four sizes. In most cases, you'll be fine with `medium`.
+    */
+  size?: keyof typeof sizes;
+}
+
+const Image = styled.div<Partial<AvatarProps>>`
   background: ${(props) => (!props.loading ? 'transparent' : color.light)};
   border-radius: 50%;
   display: inline-block;
@@ -76,7 +97,7 @@ const Image = styled.div`
   }
 `;
 // prettier-ignore
-const Initial = styled.div`
+const Initial = styled.div<Partial<AvatarProps>>`
   color: ${color.lightest};
   text-align: center;
 
@@ -103,9 +124,16 @@ const Initial = styled.div`
 - Use an avatar for attributing actions or content to specific users.
 - The user's name should always be present when using Avatar – either printed beside the avatar or in a tooltip.
 **/
-export function Avatar({ loading, username, src, size, ...props }) {
+export const Avatar: FC<AvatarProps> = ({
+  loading = false,
+  username = 'loading',
+  src,
+  size = 'medium',
+  ...props
+}) => {
   let avatarFigure = <Icon icon='useralt' />;
-  const a11yProps = {};
+
+  const a11yProps: ComponentProps<typeof Image> = {};
 
   if (loading) {
     a11yProps['aria-busy'] = true;
@@ -120,37 +148,9 @@ export function Avatar({ loading, username, src, size, ...props }) {
       </Initial>
     );
   }
-
   return (
     <Image size={size} loading={loading} src={src} {...a11yProps} {...props}>
       {avatarFigure}
     </Image>
   );
-}
-
-Avatar.propTypes = {
-  /**
-    Use the loading state to indicate that the data Avatar needs is still loading.
-    */
-  loading: PropTypes.bool,
-  /**
-    Avatar falls back to the user's initial when no image is provided.
-    Supply a `username` and omit `src` to see what this looks like.
-    */
-  username: PropTypes.string,
-  /**
-    The URL of the Avatar's image.
-    */
-  src: PropTypes.string,
-  /**
-    Avatar comes in four sizes. In most cases, you'll be fine with `medium`.
-    */
-  size: PropTypes.oneOf(Object.keys(sizes)),
-};
-
-Avatar.defaultProps = {
-  loading: false,
-  username: 'loading',
-  src: null,
-  size: 'medium',
 };

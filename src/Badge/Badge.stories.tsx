@@ -1,12 +1,18 @@
-import { Badge } from './Badge';
-import { Icon } from '../Icon/Icon';
+import type { Meta, StoryObj } from '@storybook/react';
 
-export default {
+import { Badge } from './Badge';
+
+import { Icon } from '../Icon';
+
+const meta = {
   title: 'Design System/Badge',
   component: Badge,
-};
+} satisfies Meta<typeof Badge>;
 
-export const AllBadges = {
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+export const AllBadges: Story = {
   args: {
     icon: 'facehappy',
     inline: true,
@@ -27,41 +33,41 @@ export const AllBadges = {
   ),
 };
 
-export const Positive = {
+export const Positive: Story = {
   args: {
     status: 'positive',
     children: 'Positive',
   },
 };
 
-export const Negative = {
+export const Negative: Story = {
   args: {
     status: 'negative',
     children: 'Negative',
   },
 };
-export const Warning = {
+export const Warning: Story = {
   args: {
     status: 'warning',
     children: 'Warning',
   },
 };
 
-export const Neutral = {
+export const Neutral: Story = {
   args: {
     status: 'neutral',
     children: 'Neutral',
   },
 };
 
-export const Error = {
+export const Error: Story = {
   args: {
     status: 'error',
     children: 'Error',
   },
 };
 
-export const WithIcon = {
+export const WithIcon: Story = {
   args: {
     status: 'warning',
     icon: 'check',

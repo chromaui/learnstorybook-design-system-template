@@ -1,11 +1,16 @@
+import type { Meta, StoryObj } from '@storybook/react';
+
 import { Avatar } from './Avatar';
 
-export default {
+const meta = {
   title: 'Design System/Avatar',
   component: Avatar,
-};
+} satisfies Meta<typeof Avatar>;
 
-export const Standard = {
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+export const Standard: Story = {
   args: {
     size: 'large',
     username: 'Tom Coleman',
@@ -13,7 +18,7 @@ export const Standard = {
   },
 };
 
-export const Sizes = {
+export const Sizes: Story = {
   args: {
     username: 'Tom Coleman',
     src: 'https://avatars2.githubusercontent.com/u/132554',
@@ -28,8 +33,8 @@ export const Sizes = {
   ),
 };
 
-export const Initials = {
-  render: (args) => (
+export const Initials: Story = {
+  render: () => (
     <>
       <Avatar username='Tom Coleman' />
       <Avatar username='Dominic Nguyen' />
@@ -39,7 +44,7 @@ export const Initials = {
   ),
 };
 
-export const Loading = {
+export const Loading: Story = {
   args: {
     loading: true,
   },
@@ -53,7 +58,7 @@ export const Loading = {
   ),
 };
 
-export const Large = {
+export const Large: Story = {
   render: () => (
     <>
       <Avatar loading size='large' />
