@@ -2,9 +2,11 @@ import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import { background, color, typography } from '../shared/styles';
 
-interface BadgeProps {
+export interface BadgeProps {
   status?: 'positive' | 'negative' | 'neutral' | 'error' | 'warning';
   children: React.ReactNode;
+  icon?: string;
+  inline?: boolean;
 }
 
 const BadgeWrapper = styled.div<BadgeProps>`
@@ -65,7 +67,12 @@ const BadgeWrapper = styled.div<BadgeProps>`
 export const Badge: React.FC<BadgeProps> = ({
   status = 'neutral',
   children,
+  icon,
   ...props
 }) => {
-  return <BadgeWrapper {...props}>{children}</BadgeWrapper>;
+  return (
+    <BadgeWrapper status={status} {...props}>
+      {children}
+    </BadgeWrapper>
+  );
 };

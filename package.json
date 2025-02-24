@@ -16,6 +16,9 @@
       }
     }
   },
+  "engines": {
+    "node": "^18.0.0 || ^20.0.0 || >=22.0.0"
+  },
   "files": [
     "dist/**/*",
     "README.md"
@@ -30,6 +33,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
+    "@emotion/babel-plugin": "^11.13.5",
     "@emotion/react": "^11.13.3",
     "@emotion/styled": "^11.13.0",
     "@types/node": "18.15.3",
@@ -70,5 +74,10 @@
   "resolutions": {
     "jackspeak": "2.1.1"
   },
-  "packageManager": "yarn@4.5.0"
+  "packageManager": "yarn@4.5.0",
+  "auto": {
+    "plugins": [
+      "npm"
+    ]
+  }
 }

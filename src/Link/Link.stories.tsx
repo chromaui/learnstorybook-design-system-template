@@ -4,7 +4,7 @@ import styled from '@emotion/styled';
 
 import { Icon } from '../Icon';
 import { Link } from '../Link';
-import { StoryLinkWrapper } from './StoryLinkWrapper';
+import { StoryLinkWrapper } from '../LinkWrapper';
 
 import { action } from '@storybook/addon-actions';
 

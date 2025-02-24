@@ -4155,6 +4155,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "learnstorybook-design-system-template@workspace:."
   dependencies:
+    "@emotion/babel-plugin": "npm:^11.13.5"
     "@emotion/react": "npm:^11.13.3"
     "@emotion/styled": "npm:^11.13.0"
     "@types/node": "npm:18.15.3"
