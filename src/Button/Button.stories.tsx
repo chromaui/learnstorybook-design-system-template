@@ -1,9 +1,12 @@
+import type { Meta, StoryObj } from '@storybook/react';
+
 import styled from '@emotion/styled';
 
 import { Button } from './Button';
-import { Icon } from '../Icon/Icon';
-import { StoryLinkWrapper } from '../LinkWrapper';
 
+import { Icon } from '../Icon';
+
+import { StoryLinkWrapper } from '../LinkWrapper';
 
 const CustomButton = styled.button`
   border: 1px solid green;
@@ -13,16 +16,19 @@ const CustomButton = styled.button`
   font-size: 1.2em;
 `;
 
-function ButtonWrapper(props) {
+function ButtonWrapper(props: any) {
   return <CustomButton {...props} />;
 }
 
-export default {
+const meta = {
   title: 'Design System/Button',
   component: Button,
-};
+} satisfies Meta<typeof Button>;
 
-export const AllButtons = {
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+export const AllButtons: Story = {
   name: 'all buttons',
   render: () => (
     <>
@@ -78,7 +84,7 @@ export const AllButtons = {
   ),
 };
 
-export const buttonWrapper = {
+export const buttonWrapper: Story = {
   name: 'button wrapper',
   render: () => (
     <div>
@@ -163,7 +169,7 @@ export const buttonWrapper = {
   ),
 };
 
-export const AnchorWrapper = {
+export const AnchorWrapper: Story = {
   name: 'anchor wrapper',
   render: () => (
     <div>
@@ -326,4 +332,3 @@ export const AnchorWrapper = {
     </div>
   ),
 };
-
